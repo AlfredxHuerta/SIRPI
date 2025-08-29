@@ -1,0 +1,50 @@
+<!-- Extender la plantilla base -->
+{% extends 'base.html' %}
+
+<!-- Cargar estáticos -->
+{% load static %} 
+
+<!-- Contenido dinamico de Proxmimos eventos -->
+{% block content %}
+<div class="container py-5">
+  <h2 class="text-center mb-4">Próximos Eventos</h2>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <!-- Por cada evento presentar una tarjeta con los detalles -->
+    {% for evento in eventos %}
+    <div class="col">
+      <div class="card h-100 shadow">
+        {% if evento.imagen %}
+          <img src="{{ evento.imagen.url }}" class="card-img-top" alt="Imagen del evento">
+        {% endif %}
+        <!-- Cuerpo de la tarjeta -->
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">{{ evento.titulo }}</h5>
+          <p><strong>📍 Lugar:</strong> {{ evento.lugar }}</p>
+          <p><strong>📅 Fecha:</strong> {{ evento.fecha }}</p>
+          <p><strong>⏰ Hora:</strong> {{ evento.hora }}</p>
+          <p><strong>🏷️ Categoría:</strong> {{ evento.get_categoria_display }}</p>
+          <p>{{ evento.descripcion|truncatechars:100 }}</p>
+          <!-- Anexos de las batallas por si hay un pdf con reglamento o similar -->
+          {% if evento.archivo or evento.link_info %}
+          <div class="mt-2">
+            {% if evento.archivo %}
+              <a href="{{ evento.archivo.url }}" class="btn btn-sm btn-outline-primary" target="_blank">📄 Ver archivo</a>
+            {% endif %}
+            {% if evento.link_info %}
+              <a href="{{ evento.link_info }}" class="btn btn-sm btn-outline-success" target="_blank">🔗 Registro</a>
+            {% endif %}
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% comment %} En caso de que no hay batallas muestra un mensaje {% endcomment %}
+    {% empty %}
+    <div class="col-12 text-center text-warning">
+      <p>No hay eventos programados.</p>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

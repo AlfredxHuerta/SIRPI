@@ -1,0 +1,57 @@
+<!-- Extender de base -->
+{% extends 'base.html' %}
+
+<!-- Plantilla para formulario de captura de datos para registro de equipos con validaciones. -->
+{% block content %}
+  <!-- Mensajes para el usuario para formulario -->
+  {% comment %} {% include 'mensajes.html' %} {% endcomment %}
+  <div class="container mt-5">
+    <h2 class="text-center">Registro de Equipos</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card p-4 shadow" style="margin-bottom: 100px;">
+        <!-- Formulario -->
+          <form method="post" novalidate>
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+
+            <!-- Nombre del equipo -->
+            <div class="mb-3">
+              <label for="id_nombre_equipo" class="form-label">Nombre del Prototipo:</label>
+              {{ form.nombre_equipo }}
+              {% for error in form.nombre_equipo.errors %}
+                <div class="text-danger">{{ error }}</div>
+              {% endfor %}
+            </div>
+            <!-- Categoría -->
+            <div class="mb-3">
+              <label for="id_categoria" class="form-label">Categoría a participar:</label>
+              {{ form.categoria }}
+              {% for error in form.categoria.errors %}
+                <div class="text-danger">{{ error }}</div>
+              {% endfor %}
+            </div>
+            <!-- Nombre del capitán -->
+            <div class="mb-3">
+              <label for="id_nombre_capitan" class="form-label">Nombre del Capitán:</label>
+              {{ form.nombre_capitan }}
+              {% for error in form.nombre_capitan.errors %}
+                <div class="text-danger">{{ error }}</div>
+              {% endfor %}
+            </div>
+            <!-- Integrantes -->
+            <div class="mb-3">
+              <label for="id_integrantes" class="form-label">Integrantes (separados por comas):</label>
+              {{ form.integrantes }}
+              {% for error in form.integrantes.errors %}
+                <div class="text-danger">{{ error }}</div>
+              {% endfor %}
+            </div>
+            <!-- Botón de registrar -->
+            <button type="submit" class="btn btn-primary w-100">¡Registrar Equipo!</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

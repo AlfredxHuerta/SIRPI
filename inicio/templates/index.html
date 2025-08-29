@@ -1,0 +1,306 @@
+<!-- Extender de la plantilla base -->
+{% extends 'base.html' %}
+<!-- Cargar estáticos -->
+{% load static %}
+<!-- Bloque dinamico que muestra el index de la pagina principal -->
+{% block content %}
+  <!-- Carousel Start -->
+  <div class="header-carousel owl-carousel">
+  <!-- Cartel dos del carrusel -->
+    <div class="header-carousel-item">
+      <img src="../static/img/robots_circuitos.jpg" class="img-fluid rounded w-100" alt="Image" />
+      <div class="carousel-caption">
+        <div class="container align-items-center py-4">
+          <div class="row g-5 align-items-center">
+            <div class="col-xl-7 fadeInLeft animated" data-animation="fadeInLeft" data-delay="1" style="animation-delay: 1s;">
+              <div class="text-start">
+                <h4 class="text-primary text-uppercase fw-bold mb-4">Bienvenido a la comunidad Hálcon</h4>
+                <h1 class="display-4 text-uppercase text-white mb-4">Aquí es donde los circuitos y las ideas se conectan.</h1>
+                <p class="mb-4 fs-5">Somos innovación, somos tecnología... ¡Somos Robótica ITSUR!</p>
+                <div class="d-flex flex-shrink-0">
+                  <a class="btn btn-primary rounded-pill text-white py-3 px-5" href="{% url 'calendario' %}">¡Visita Nuestro Calendario!</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Cartel dos del carrusel -->
+    <div class="header-carousel-item">
+      <img src="../static/img/robotBackgroundCarrucel2.jpg" class="img-fluid rounded w-100" alt="Image" />
+      <div class="carousel-caption">
+        <div class="container py-4">
+          <div class="row g-5 align-items-center">
+            <div class="col-xl-7 fadeInLeft animated" data-animation="fadeInLeft" data-delay="1s" style="animation-delay: 1s;">
+              <div class="text-start">
+                <h4 class="text-primary text-uppercase fw-bold mb-4">Bienvenido a la comunidad Hálcon</h4>
+                <h1 class="display-4 text-uppercase text-white mb-4">Donde las ideas se transforman en prototipos ganadores.</h1>
+                <p class="mb-4 fs-5">Imaginamos, diseñamos, programamos... ¡Somos Robótica ITSUR!</p>
+                <div class="d-flex flex-shrink-0">
+                  <a class="btn btn-primary rounded-pill text-white py-3 px-5" href="{% url 'capturar_equipo' %}">¡REGISTRA TU EQUIPO AHORA!</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-5 fadeInRight animated" data-animation="fadeInRight" data-delay="1s" style="animation-delay: 3s;">
+
+            <div>
+                    {% comment %} <img src="../static/img/robotBackgroundCarrucel2.jpg" class="img-fluid rounded w-100" alt="Image" /> {% endcomment %}
+            </div>
+              {% comment %} <div class="ticket-form p-5">
+                <h2 class="text-dark text-uppercase mb-4">book your ticket</h2>
+                <form>
+                  <div class="row g-4">
+                    <div class="col-12">
+                      <input type="text" class="form-control border-0 py-2" id="name" placeholder="Your Name" />
+                    </div>
+                    <div class="col-12 col-xl-6">
+                      <input type="email" class="form-control border-0 py-2" id="email" placeholder="Your Email" />
+                    </div>
+                    <div class="col-12 col-xl-6">
+                      <input type="phone" class="form-control border-0 py-2" id="phone" placeholder="Phone" />
+                    </div>
+                    <div class="col-12">
+                      <select class="form-select border-0 py-2" aria-label="Default select example">
+                        <option selected>Select Packages</option>
+                        <option value="1">Family Packages</option>
+                        <option value="2">Basic Packages</option>
+                        <option value="3">Premium Packages</option>
+                      </select>
+                    </div>
+                    <div class="col-12">
+                      <input class="form-control border-0 py-2" type="date" />
+                    </div>
+                    <div class="col-12">
+                      <input type="number" class="form-control border-0 py-2" id="number" placeholder="Guest" />
+                    </div>
+                    <div class="col-12">
+                      <button type="button" class="btn btn-primary w-100 py-2 px-5">Book Now</button>
+                    </div>
+                  </div>
+                </form>
+              </div> {% endcomment %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Carousel End -->
+
+  <!-- Apartado de batallas -->
+  <div class="container-fluid feature py-5">
+    <div class="container py-5">
+      <div class="row g-4">
+        <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
+          <div class="feature-item">
+            <img src="../static/img/seguidor_linea.jpg" class="img-fluid rounded w-100" alt="Image" />
+            <div class="feature-content p-4">
+              <div class="feature-content-inner">
+                <h4 class="text-white">Seguidor de línea</h4>
+                <p class="text-white">En la competencia de Seguidor de Línea, los robots demuestran su precisión y velocidad al seguir un circuito con sensores y algoritmos optimizados</p>
+                <a href="#" class="btn btn-primary rounded-pill py-2 px-4">Ver más...<i class="fa fa-arrow-right ms-1"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
+          <div class="feature-item">
+            <img src="../static/img/mini_zumo_rc.png" class="img-fluid rounded w-100" alt="Image" />
+            <div class="feature-content p-4">
+              <div class="feature-content-inner">
+                <h4 class="text-white">Mini Zumo RC</h4>
+                <p class="text-white">En Mini Zumo RC, los equipos controlan sus robots en tiempo real para empujar al oponente fuera del área. Estrategia, reflejos y precisión lo son todo.</p>
+                <a href="#" class="btn btn-primary rounded-pill py-2 px-4">Ver más...<i class="fa fa-arrow-right ms-1"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
+          <div class="feature-item">
+            <img src="../static/img/mini_zumo_auto.png" class="img-fluid rounded w-100" alt="Image" />
+            <div class="feature-content p-4">
+              <div class="feature-content-inner">
+                <h4 class="text-white">Mini Zumo AUTO</h4>
+                <p class="text-white">En Mini Zumo AUTO, los robots compiten de forma autónoma para detectar, esquivar y vencer al rival. La inteligencia del algoritmo define al ganador.</p>
+                <a href="#" class="btn btn-primary rounded-pill py-2 px-4">Ver más...<i class="fa fa-arrow-right ms-1"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Fin apartado de batallas -->
+
+  <!-- Atributos adquiridos -->
+  <div class="container-fluid about pb-5">
+    <div class="container pb-5">
+      <div class="row g-5">
+        <div class="col-xl-6 wow fadeInUp" data-wow-delay="0.2s">
+          <div>
+            <h4 class="text-primary">Ácerca del club de robótica</h4>
+            <h1 class="display-5 mb-4">Explora, crea y lidera el futuro de la tecnología con nosotros.</h1>
+            <p class="mb-5">Nacimos de un grupo de estudiantes apasionados por la tecnología y el ingenio, decididos a llevar la robótica a otro nivel dentro del ITSUR. Hoy, somos una comunidad que transforma ideas en innovación real.</p>
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div class="d-flex">
+                  <div class="me-3">
+                    {% comment %}Icono de foco{% endcomment %}
+                    <i class="fas fa-lightbulb fa-3x text-warning"></i>
+                  </div>
+                  <div>
+                    <h4>Innovación constante</h4>
+                    <p>Siempre buscamos nuevas ideas y soluciones para impactar con creatividad.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="d-flex">
+                  <div class="me-3">
+                    {% comment %}Icono de manos{% endcomment %}
+                    <i class="fas fa-handshake fa-3x text-success"></i>
+                  </div>
+                  <div>
+                    <h4>Trabajo en equipo</h4>
+                    <p>Creemos que la colaboración nos lleva más lejos que el esfuerzo individual.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="d-flex">
+                  <div class="me-3">
+                    {% comment %}Icono de compromiso{% endcomment %}
+                    <i class="fas fa-file-signature fa-3x text-primary"></i>
+                  </div>
+                  <div>
+                    <h4>Compromiso</h4>
+                    <p>Damos lo mejor de nosotros en cada proyecto, desafío o competencia.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="d-flex">
+                  <div class="me-3">
+                    {% comment %}Icono de laptop{% endcomment %}
+                    <i class="fas fa-laptop-code fa-3x text-primary"></i>
+                  </div>
+                  <div>
+                    <h4>Pasión por la tecnología</h4>
+                    <p>Amamos lo que hacemos y eso se refleja en cada robot y cada línea de código.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Fin atributos -->
+
+  <!-- Habilidades del club -->
+  <div class="container-fluid service py-5">
+    <div class="container service-section py-5">
+      <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+        <h4 class="text-primary">Habilidades que desarrollaras</h4>
+        <h1 class="display-5 mb-4">Cree en tí</h1>
+        <p class="mb-0">Únete al mundo de la robótica y transforma tu forma de pensar. Aquí aprenderás a resolver problemas, trabajar en equipo, liderar proyectos y dominar herramientas tecnológicas que te prepararán para los retos del futuro. Desarrolla tu potencial y descubre de lo que eres capaz.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-0 col-md-1 col-lg-2 col-xl-2"></div>
+        <div class="col-md-10 col-lg-8 col-xl-8 wow fadeInUp" data-wow-delay="0.2s"></div>
+        <div class="col-0 col-md-1 col-lg-2 col-xl-2"></div>
+        <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
+          <div class="service-item p-4">
+            <div class="service-content">
+              <div class="mb-4">
+                <i class="fas fa-code fa-3x text-info"></i> <!-- Etiqueta de código: representa programación en general -->
+              </div>
+              <a href="#" class="h4 d-inline-block mb-3">Programación de Robots</a>
+              <p class="mb-0">Aprende a controlar robots usando lenguajes como Python, C++ o bloques visuales. Desarrolla lógica, pensamiento computacional y resolución de problemas.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.4s">
+          <div class="service-item p-4">
+            <div class="service-content">
+              <div class="mb-4">
+                <i class="fas fa-cogs fa-3x text-dark"></i> <!-- Engranajes: ideal para representar mecánica o trabajo técnico -->
+              </div>
+              <a href="#" class="h4 d-inline-block mb-3">Diseño e impresión 3D</a>
+              <p class="mb-0">Explora el modelado digital y la fabricación de piezas para robots. Desarrolla habilidades creativas y técnicas para el diseño de soluciones reales.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.6s">
+          <div class="service-item p-4">
+            <div class="service-content">
+              <div class="mb-4">
+                <i class="fas fa-microchip fa-3x text-danger"></i> <!-- Microchip: representa electrónica o programación -->
+              </div>
+              <a href="#" class="h4 d-inline-block mb-3">Electrónica y circuitos</a>
+              <p class="mb-0">Entiende cómo funcionan sensores, motores y microcontroladores como el Arduino o ESP32. Aplica la teoría en circuitos reales que interactúan con el mundo físico.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.8s">
+          <div class="service-item p-4">
+            <div class="service-content">
+              <div class="mb-4">
+                <i class="fas fa-trophy fa-3x text-warning"></i> <!-- Trofeo -->
+              </div>
+              <a href="#" class="h4 d-inline-block mb-3">Participación en Torneos</a>
+              <p class="mb-0">Demuestra tus habilidades en competencias locales y regionales, enfrentándote a retos reales de robótica mientras representas al club con orgullo.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Fin habilidades -->
+
+  <!-- Ubicacion mapa y datos -->
+  <div class="container-fluid gallery py-5 bg-light">
+    <div class="container py-5">
+      <div class="text-center mx-auto mb-5" style="max-width: 800px;">
+        <h4 class="text-primary">Visítanos</h4>
+        <h1 class="display-5 mb-4">Nuestra ubicación</h1>
+        <p class="mb-0">Aprende, crece y conecta con nosotros en nuestras instalaciones. Descubre cómo la tecnología puede transformar tu futuro.</p>
+      </div>
+
+      <div class="row g-4 align-items-center">
+        <!-- Mapa -->
+        <div class="col-lg-7">
+          <div class="ratio ratio-16x9 rounded shadow">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4443.344683291593!2d-101.15329562417517!3d20.139413317728224!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842cfab60ca5e1d3%3A0x60ae1a745fc6bf18!2sITSUR%20Instituto%20Tecnol%C3%B3gico%20Superior%20del%20Sur%20de%20Guanajuato!5e1!3m2!1ses-419!2smx!4v1749589919836!5m2!1ses-419!2smx" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+
+        <!-- Info de la úbicación -->
+        <div class="col-lg-5">
+          <div class="bg-white p-4 rounded shadow">
+            <h4 class="mb-4"><i class="fas fa-map-location-dot me-2 text-primary"></i> ¿Dónde nos encontramos?</h4>
+            <p>
+              <i class="fas fa-map-marker-alt text-danger me-2"></i><strong>Domicilio:</strong> Av. Edu. Superior #2000, Uriangato, Gto.
+            </p>
+            <p>
+              <i class="fas fa-phone text-success me-2"></i><strong>Tel:</strong> 445 457 7468 *107
+            </p>
+            <p>
+              <i class="fas fa-envelope text-warning me-2"></i><strong>Email:</strong> robotica@itsur.edu.mx
+            </p>
+            <p>
+              <i class="fas fa-clock text-info me-2"></i><strong>Horario:</strong> L-V, 9:00 AM - 3:00 PM
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fin mapa y datos -->
+
+  <!-- Boton de ir arriba -->
+  <a href="#" class="btn btn-primary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
+{% endblock %}

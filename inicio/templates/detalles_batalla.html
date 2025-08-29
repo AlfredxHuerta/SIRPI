@@ -1,0 +1,14 @@
+{% comment %} <!-- Extender de base -->
+{% extends 'base.html' %}
+<!-- Contenido dinamico de detalles de batalla -->
+{% block content %}
+  <div class="container mt-5">
+    <h2>{{ batalla.nombre }}</h2>
+    <p>{{ batalla.descripcion }}</p>
+    <img src="{% static 'img/'|add:batalla.imagen %}" class="img-fluid" alt="{{ batalla.nombre }}" />
+    <p>
+      <strong>Fecha:</strong> {{ batalla.fecha }}
+    </p>
+    <!-- Agrega más detalles de la batalla si es necesario -->
+  </div>
+{% endblock %} {% endcomment %}

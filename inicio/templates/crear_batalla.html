@@ -1,0 +1,56 @@
+<!-- Extender de base -->
+{% extends 'base.html' %}
+<!-- Cargar estáticos -->
+{% load static %}
+
+<!-- Plantilla de crear batalla JUEZ -->
+{% block content %}
+  <div class="container py-5">
+    <div class="card shadow">
+      <h3 class="card-title mb-4 text-center">Crear Nueva Batalla</h3>
+      <div class="card-body">
+        <form method="POST">
+          {% csrf_token %}
+          <div class="row g-4">
+            <!-- Categoría -->
+            <div class="col-md-6">
+              <label for="categoria" class="form-label">Categoría:</label>
+              <select name="categoria" id="categoria" class="form-select" required>
+                <option value="">Selecciona una opción</option>
+                <option value="SL">Seguidor de línea</option>
+                <option value="MSRC">Mini Sumo RC</option>
+                <option value="MSA">Mini Sumo Autónomo</option>
+              </select>
+            </div>
+            <!-- Descripción -->
+            <div class="col-md-6">
+              <label for="descripcion" class="form-label">Descripción:</label>
+              <textarea name="descripcion" id="descripcion" class="form-control" rows="1" placeholder="Breve descripción..."></textarea>
+            </div>
+            <!-- Equipos -->
+            <div class="col-12">
+              <label class="form-label">Selecciona los equipos (mínimo 3):</label>
+              <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+                {% for equipo in equipos %}
+                  <div class="col">
+                    <div class="border rounded p-3 d-flex align-items-start">
+                      <input class="form-check-input me-3 mt-1" type="checkbox" name="equipos" value="{{ equipo.id }}" id="equipo_{{ equipo.id }}" />
+                      <div>
+                        <label class="form-check-label fw-bold d-block" for="equipo_{{ equipo.id }}">{{ equipo.nombre_equipo }}</label>
+                        <small class="text-muted">Capitán: {{ equipo.nombre_capitan }}</small>
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+            <!-- Botón de crear batalla -->
+            <div class="col-12">
+              <button type="submit" class="btn btn-success w-100 py-2">Crear Batalla</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

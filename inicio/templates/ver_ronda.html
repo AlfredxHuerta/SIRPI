@@ -1,0 +1,61 @@
+<!-- Ver la ronda desde el panel admin -->
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <h2 class="my-4 text-center">Ronda de Batalla #{{ batalla.numero }}</h2>
+
+  <p class="text-center fs-5">
+    <strong>Equipo seleccionado:</strong>
+    <span id="equipo-seleccionado" class="text-primary">Ninguno</span>
+  </p>
+
+  <div class="container">
+    <div class="table-responsive">
+      <table id="tabla-equipos" class="table table-bordered table-hover text-center align-middle shadow-sm rounded">
+        <thead class="table-dark">
+          <tr>
+            <th>#</th>
+            <th>Equipo</th>
+            <th>Tiempo</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for p in participaciones %}
+            <tr class="selectable-row" data-equipo-id="{{ p.equipo.id }}">
+              <td>{{ forloop.counter }}</td>
+              <td>{{ p.equipo.nombre_equipo }}</td>
+              <td>{{ p.tiempo }} s</td>
+              <td>
+                {% if p.tiempo > 0 %}
+                  <span class="text-success">✅ Registrado</span>
+                {% else %}
+                  <span class="text-warning">⏳ Esperando</span>
+                {% endif %}
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    {% if not ronda.cerrada %}
+      {% if tiempos_completos %}
+        <form method="POST" action="{% url 'cerrar_ronda' batalla.pk %}" class="text-center my-4">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-danger">Cerrar Ronda</button>
+        </form>
+      {% else %}
+        <p class="text-center text-muted">
+          <em>Aún faltan tiempos por registrar.</em>
+        </p>
+      {% endif %}
+    {% else %}
+      <p class="text-center fw-bold text-success mt-4">
+        Ronda cerrada. 🏆 Ganador: <span class="text-dark">{{ batalla.ganador.nombre_equipo }}</span>
+      </p>
+    {% endif %}
+  </div>
+{% endblock %}

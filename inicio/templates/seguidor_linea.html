@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %} <!-- Cargar el tag static -->
+
+{% block content %}
+<!-- Aquí va el contenido específico para la página de inicio -->
+ 
+<div class="container my-5">
+    <h2 class="display-4">Batallas de seguidores de línea</h2>
+    <!-- Fila de imagen y descripción -->
+     
+    <div class="row align-items-center">
+        <!-- Imagen en el lado izquierdo -->
+         
+        <div class="col-md-6">
+            <img src="{% static 'img\seguidor_linea_pista.png' %}" alt="Imagen segudior de linea" class="img-fluid">
+        </div>
+        <!-- Descripción en el lado derecho -->
+        <div class="col-md-6">
+            <p class="lead text-secundary fw-semibold">¡Convierte tu pasión en innovación!</p>
+            <p class="lead">En la competencia de Seguidor de Línea se evalúa la habilidad del robot para seguir con precisión un recorrido marcado.</p>
+            <p class="lead">Se busca rapidez, estabilidad y eficiencia en la lectura de sensores, así como un control óptimo en curvas y rectas. El mejor robot es aquel que completa el circuito en el menor tiempo, sin perder el camino.</p>
+                 <!-- Tarjeta de Batallas -->
+        <div class="col-md-6 mb-3">
+            <div class="card h-100">
+                <div class="card-body d-flex align-items-center justify-content-center">
+                    <a href="/batallas_seguidor" class="btn btn-primary btn-lg w-100">Ver Batallas</a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+
+    <!-- Fila de tarjetas como botones -->
+    <div class="row mt-4">
+       
+        </div>
+
+        <!-- Tarjeta de Ranking -->
+        {% comment %} <div class="col-md-6 mb-3">
+            <div class="card h-100">
+                <div class="card-body d-flex align-items-center justify-content-center">
+                    <a href="/ranking" class="btn btn-success btn-lg w-100 H-70px">Ranking</a>
+                </div>
+            </div>
+        </div> {% endcomment %}
+    </div>
+    
+</div>
+{% endblock %}

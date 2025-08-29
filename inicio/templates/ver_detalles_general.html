@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="container py-5">
+    <!-- Título -->
+    <h2 class="text-center mb-4">Detalles de Batalla #{{ batalla.numero }}</h2>
+
+    {% if ronda.cerrada %}
+      <div id="mensaje-ganador" class="text-center my-4 position-relative">
+        <h2 class="text-success fw-bold">🎉 ¡Ganador: {{ batalla.ganador.nombre_equipo }} 🎉</h2>
+        <canvas id="confetti-canvas" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:9999;"></canvas>
+      </div>
+    {% endif %}
+
+    <!-- Tabla de Participaciones -->
+    <div class="table-responsive shadow rounded">
+      <table id="tabla-equipos" class="table table-bordered table-hover text-center align-middle mb-0">
+        <thead class="table-dark">
+          <tr>
+            <th>#</th>
+            <th>Equipo</th>
+            <th>Tiempo</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for p in participaciones %}
+            <tr>
+              <td>{{ forloop.counter }}</td>
+              <td>{{ p.equipo.nombre_equipo }}</td>
+              <td>{{ p.tiempo }} s</td>
+              <td>
+                {% if p.tiempo > 0 %}
+                  <span class="text-success">✅ Registrado</span>
+                {% else %}
+                  <span class="text-warning">⏳ Esperando</span>
+                {% endif %}
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    {% if not ronda.cerrada %}
+      <p class="text-center text-muted mt-4">
+        <em>Aún faltan tiempos por registrar.</em>
+      </p>
+    {% endif %}
+  </div>
+
+  <!-- Confetti JS (si la batalla está cerrada) -->
+  {% if ronda.cerrada %}
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+      const canvas = document.getElementById('confetti-canvas')
+      const confetti = window.confetti.create(canvas, { resize: true })
+      confetti({ particleCount: 200, spread: 100, origin: { y: 0.6 } })
+    </script>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,57 @@
+<!-- Plantilla base -->
+{% extends 'base.html' %}
+<!-- Titulo de la pestaña -->
+{% block title %}
+  Batallas Seguidor
+{% endblock %}
+{% load static %}
+<!-- Pantalla de dashboard de batallas -->
+{% block content %}
+  <div class="container py-4">
+    <h2 class="mb-4 text-center">Dashboard de Batallas</h2>
+      <div class="col-12">
+        <h4 class="mb-3">Historial de Batallas</h4>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <!-- Por cada batalla se hace una tarjeta con sus datos -->
+          {% for batalla in batallas %}
+            <div class="col">
+              <div class="card shadow-sm h-100">
+                <div class="card-body d-flex flex-column justify-content-between">
+                  <div>
+                    <h5 class="card-title">Batalla No: {{ batalla.numero }}</h5>
+                    <p class="card-text mb-1">
+                      <strong>Categoría:</strong> {{ batalla.categoria }}
+                    </p>
+                    <p class="card-text mb-1">
+                      <strong>Ganador:</strong> {{ batalla.ganador.nombre_equipo }}
+                    </p>
+                    <p class="card-text mb-1">
+                      <strong>Fecha:</strong> {{ batalla.fecha_fin|date:'d/m/Y H:i' }}
+                    </p>
+                    <p class="card-text mb-1">
+                      <strong>Estado:</strong>
+                      <!-- Si la batalla ya acabo se marca color gris -->
+                      {% if batalla.cerrada %}
+                        <span class="badge bg-secondary">Finalizada</span>
+                      {% else %}
+                      <!-- Si la batalla esta en juego se marca color naranja -->
+                        <span class="badge bg-warning text-dark">En juego</span>
+                      {% endif %}
+                    </p>
+                  </div>
+                  <!-- Boton de los detalles de esa batalla pasando su id -->
+                  <a href="{% url 'ver_detalles_general' batalla.numero %}" class="btn btn-outline-primary btn-sm mt-3">Ver Detalles</a>
+                </div>
+              </div>
+            </div>
+            <!-- Si no hay batallas muestra que no hay -->
+          {% empty %}
+            <div class="col-12">
+              <div class="alert alert-info">No hay batallas finalizadas.</div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

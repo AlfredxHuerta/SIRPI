@@ -1,0 +1,62 @@
+<!-- Extender la plantilla base -->
+{% extends 'base.html' %}
+<!-- Cargar los estaticos -->
+{% load static %}
+
+<!-- Plantilla para juez -->
+{% block content %}
+  <div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2 class="mb-0">Panel del Juez</h2>
+      <!-- Boton para crear batalla -->
+      <a href="{% url 'crear_batalla' %}" class="btn btn-success">+ Crear Nueva Batalla</a>
+    </div>
+    <!-- Por cada batalla crear una tarjeta con sus datos -->
+    {% if batallas %}
+      <div class="row g-4">
+        {% for b in batallas %}
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="card shadow-sm h-100">
+              <div class="card-body d-flex flex-column justify-content-between">
+                <div>
+                  <h5 class="card-title">Batalla No: {{ b.numero }}</h5>
+                  <p class="card-text mb-1">
+                    <strong>Descripción:</strong> {{ b.descripcion }}
+                  </p>
+                  <p class="card-text mb-1">
+                    <strong>Fecha creación:</strong> {{ b.fecha_inicio|date:'d M Y - H:i' }}
+                  </p>
+                  <p class="card-text mb-1">
+                    <strong>Fecha cierre:</strong> {{ b.fecha_cierre|date:'d M Y - H:i' }}
+                  </p>
+                  <p class="card-text">
+                    <strong>Estado:</strong>
+                    {% if b.cerrada %}
+                      <span class="badge bg-secondary">Cerrada</span>
+                    {% else %}
+                      <span class="badge bg-warning text-dark">Abierta</span>
+                    {% endif %}
+                  </p>
+                </div>
+                <div class="mt-3">
+                <!-- Ver los detalles de la batalla, pasamos el numero de batalla en como parametro para que este ligada (b.pk) -->
+                  <a href="{% url 'ver_ronda' b.pk %}" class="btn btn-outline-primary btn-sm w-100 mb-2">Ver Detalles</a>
+                  {% if not b.cerrada %}
+                    <form method="POST" action="{% url 'cerrar_ronda' b.pk %}" class="d-grid">
+                      {% csrf_token %}
+                      <!-- Cerrar un batalla (Solo si ya estan todos los timepos registrados) -->
+                      <button type="submit" class="btn btn-danger btn-sm">Cerrar Batalla</button>
+                    </form>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    <!-- Si no hay batallas muestra solo un mensajito en la pagina que no hay batallas -->
+    {% else %}
+      <div class="alert alert-info text-center">No hay batallas registradas aún.</div>
+    {% endif %}
+  </div>
+{% endblock %}
